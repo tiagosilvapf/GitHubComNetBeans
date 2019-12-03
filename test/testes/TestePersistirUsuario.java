@@ -7,6 +7,7 @@ import modelo.Aluguel;
 import modelo.Condominio;
 import modelo.Locatario;
 import modelo.UnidadeCondominial;
+import modelo.Usuario;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author Tiago
  */
-public class TestePersistirAluguel {
+public class TestePersistirUsuario {
 
-    public TestePersistirAluguel() {
+    public TestePersistirUsuario() {
     }
     
     @Test
@@ -24,13 +25,10 @@ public class TestePersistirAluguel {
         EntityManager em = EntityManagerUtil.getEntityManager();
     
  
-            Aluguel us = new Aluguel();
-            us.setValor(600.00);
-            us.setInicioContrato(Calendar.getInstance());
-            us.setFimContrato(Calendar.getInstance());
-            us.setDiaVencimento(5);
-            us.setLocatorio(em.find(Locatario.class, 10));
-            us.setUnidadeCondominial(em.find(UnidadeCondominial.class, 10));
+            Usuario us = new Usuario();
+            us.setNomeUsuario("Tiago");
+            us.setAtivo(Boolean.TRUE);
+            us.setSenha("123456");
             em.getTransaction().begin();
             em.persist(us);
             em.getTransaction().commit();

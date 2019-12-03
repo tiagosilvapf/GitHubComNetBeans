@@ -65,7 +65,21 @@ public class Aluguel implements Serializable {
     @NotNull(message = "O locatorio deve ser informado")
     @ManyToOne
     @JoinColumn(name = "locatorio",referencedColumnName = "id", nullable = false)
-    private Locatorio locatorio;  
+    private Locatario locatorio;  
+    
+      @OneToMany(mappedBy = "aluguel", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Mensalidades> mensalidade = new ArrayList<>();
+    
+        public void adicionarMensalidade (Mensalidades obj){
+        obj.setAluguel(this);
+        this.mensalidade.add(obj);
+    }
+    
+    public void removerMensalidade(int index){
+        this.mensalidade.remove(index);
+    }
+     
     
     public Aluguel(){
         
@@ -123,11 +137,11 @@ public class Aluguel implements Serializable {
         this.unidadeCondominial = unidadeCondominial;
     }
 
-    public Locatorio getLocatorio() {
+    public Locatario getLocatorio() {
         return locatorio;
     }
 
-    public void setLocatorio(Locatorio locatorio) {
+    public void setLocatorio(Locatario locatorio) {
         this.locatorio = locatorio;
     }
     
@@ -163,6 +177,14 @@ public class Aluguel implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public List<Mensalidades> getMensalidade() {
+        return mensalidade;
+    }
+
+    public void setMensalidade(List<Mensalidades> mensalidade) {
+        this.mensalidade = mensalidade;
     }
 
     

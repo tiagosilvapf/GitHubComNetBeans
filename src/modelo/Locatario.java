@@ -24,8 +24,8 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "locatorio")
-public class Locatorio extends Pessoa implements Serializable {
+@Table(name = "locatario")
+public class Locatario extends Pessoa implements Serializable {
     
 
     @Min(value = 0, message = "O valor da renda não pode ser negativo")
@@ -41,7 +41,7 @@ public class Locatorio extends Pessoa implements Serializable {
     private String telefone_trabalho;
 
     
-    public Locatorio(){
+    public Locatario(){
         
     }
 

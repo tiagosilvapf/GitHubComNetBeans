@@ -59,11 +59,8 @@ public class Condominio implements Serializable {
     public Condominio(){
         
     }
+   
     
-     @OneToMany(mappedBy = "condominio", cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<UnidadeCondominial> unidade = new ArrayList<>();
-     
           @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "condominio_recurso",
             joinColumns = 
@@ -72,9 +69,19 @@ public class Condominio implements Serializable {
                     @JoinColumn(name = "recurso", referencedColumnName = "id", nullable = false))    
     private Set<Recurso> condominioRecurso = new HashSet<>();
 
+     @OneToMany(mappedBy = "condominio", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<UnidadeCondominial> unidade = new ArrayList<>();
     
+        public void adicionarUnidade (UnidadeCondominial obj){
+        obj.setCondominio(this);
+        this.unidade.add(obj);
+    }
     
-    
+    public void removerUnidade(int index){
+        this.unidade.remove(index);
+    }
+     
     public Integer getId() {
         return id;
     }

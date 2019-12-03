@@ -2,7 +2,7 @@ package testes;
 
 import jpa.EntityManagerUtil;
 import javax.persistence.EntityManager;
-import modelo.Locatorio;
+import modelo.Locatario;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +21,7 @@ public class TestePersistirLocatorio {
         
         EntityManager em = EntityManagerUtil.getEntityManager();
         
-        Locatorio en = new Locatorio();
+        Locatario en = new Locatario();
         en.setRenda(100.20);
         en.setLocalTrabalho("local 1");
         en.setTelefone_trabalho("3313-1466");

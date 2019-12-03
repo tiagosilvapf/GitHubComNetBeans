@@ -58,6 +58,7 @@ public class UnidadeCondominial implements Serializable {
     @ManyToOne
     @JoinColumn(name = "condominio",referencedColumnName = "id", nullable = false)
     private Condominio condominio;
+    private Aluguel aluguel;
     
     public UnidadeCondominial(){
         
@@ -142,6 +143,14 @@ public class UnidadeCondominial implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Aluguel getAluguel() {
+        return aluguel;
+    }
+
+    public void setAluguel(Aluguel aluguel) {
+        this.aluguel = aluguel;
     }
 
    

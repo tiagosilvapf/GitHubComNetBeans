@@ -1,7 +1,7 @@
 package testes;
 
 import jpa.EntityManagerUtil;
-import modelo.Locatorio;
+import modelo.Locatario;
 import modelo.Pessoa;
 import java.util.Calendar;
 import javax.persistence.EntityManager;
@@ -37,7 +37,7 @@ public class TestePersistirTodos {
         em.persist(pe);
         em.getTransaction().commit();
         
-        Locatorio en = new Locatorio();
+        Locatario en = new Locatario();
         en.setRenda(100.20);
         en.setLocalTrabalho("local 1");
         en.setTelefone_trabalho("3313-1466");
